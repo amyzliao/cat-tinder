@@ -8,9 +8,19 @@
 .adopt-btn{
     display: flex;
     justify-content: center;
-    text-align: center;
+}
+
+.btn1 {
+    position: absolute;
+    top: 30%;
 }
 
 .add-btn{
+    display: flex;
+    justify-content: center;
+}
 
+.btn2 {
+    position: absolute;
+    top: 60%;
 }

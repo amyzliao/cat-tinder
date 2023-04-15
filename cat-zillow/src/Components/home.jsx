@@ -10,18 +10,19 @@ const Home = () => {
                 </a>
             </button>
             <div className="adopt-btn">
-                <button>
+                <button className="btn1">
                     <a className="adopt" href = "/">
                         <div id="submit-text">Adopt a Cat</div>
                     </a>               
                 </button>
             </div>
-            
-            <button className = 'add-btn'>
-                <a className="add" href = "/">
+            <div className="add-btn">
+                <button className = 'btn2'>
+                    <a className="add" href = "/">
                         <div id="submit-text">Add a Cat</div>
-                </a>
-            </button>
+                    </a>
+                </button>
+            </div>   
         </div>
     )
 }
