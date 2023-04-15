@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import Signin from './Components/signin';
+import Home from './Components/home';
 import './App.css';
 
 // function App() {
@@ -26,7 +27,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Signin />
+      {/* <Signin /> */}
+      <Home />
     </div>
   );
 }

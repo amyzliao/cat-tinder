@@ -1,0 +1,15 @@
+.profile{
+    display: flex;
+    float: right;
+    padding: 2vh;
+    border-radius: 75%;
+}
+
+.adopt-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.add-btn{
+
+}
