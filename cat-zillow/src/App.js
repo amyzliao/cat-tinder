@@ -1,8 +1,7 @@
 import { useData, setData } from './database/firebase.js';
 import React from "react";
-import logo from './logo.svg';
-import Signin from './Components/signin';
-import Home from './Components/home';
+import { SignInButton, SignOutButton } from './Components/signin';
+import {AddCat} from './Components/addcat';
 import './App.css';
 
 
@@ -34,8 +33,8 @@ const Cat = ({cat}) => {
   return (
     <div>
       <h3>Cat ID: { cat.cat_id }</h3>
-      <h5>Name: { cat.name }</h5>
-      <button onClick={() => setName(cat, getNewName(cat))}>Change Name</button>
+      <h5>Photo: { cat.photo }</h5>
+      <button onClick={() => setName(cat, getNewName(cat))}>Change Photo</button>
       <h5>Description: { cat.description }</h5>
     </div>
   );
@@ -51,7 +50,7 @@ const getNewName = cat => {
 const setName = async (cat, newName) => {
   if (newName && window.confirm(`Change ${cat.name} to ${newName}?`)) {
     try {
-      await setData(`/cats/${cat.cat_id}/name`, newName);
+      await setData(`/cats/${cat.cat_id}/photo`, newName);
     } catch (error) {
       alert(error);
     }
@@ -72,31 +71,6 @@ const Pixel = ({ pixel }) => {
 };*/
 
 
-//given data.cats, data.users, cat name, cat description, owner id (hopefully from owner name)
-const addCat = (cats, photo, name, desc, owner_id, users) => {
-  if (photo && name && desc){
-    //if owner_id is a valid user_id
-    for(const user in users){
-      if (user.user_id == owner_id){
-        const new_cat_id = cats.length;
-
-        const new_their_cats = user.their_cats
-        new_their_cats.append(new_cat_id)
-        setData(`/users/${owner_id}/their_cats`, new_their_cats);
-
-        setData(`/cats`, new_cat_id);
-        setData(`/cats/${new_cat_id}/name`, name);
-        setData(`/cats/${new_cat_id}/photo`, photo);
-        setData(`/cats/${new_cat_id}/desc`, desc);
-        setData(`/cats/${new_cat_id}/owner`, owner_id);
-
-        break;
-      }
-    }
-
-  }
-}
-
 const yes = () => {
 
 }
@@ -116,11 +90,12 @@ function App() {
   
   return (
     <div className="App">
-      <Home />
+      <AddCat/>
+
+      {/* <SignInButton/>
+      <SignOutButton/>
       <ListUsers users={ data.users }></ListUsers>
-      <ListCats cats={ data.cats }></ListCats>
-    
-      <Signin />
+      <ListCats cats={ data.cats }></ListCats> */}
     </div>
   );
 }
