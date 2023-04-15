@@ -2,6 +2,7 @@ import { useData, setData } from './database/firebase.js';
 import React from "react";
 import logo from './logo.svg';
 import Signin from './Components/signin';
+import Home from './Components/home';
 import './App.css';
 
 // DISPLAY LIST OF USERS
