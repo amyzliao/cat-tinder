@@ -1,5 +1,6 @@
-import { useData, setData } from './database/firebase.js';
+import { useData, setData, useUserState } from './database/firebase.js';
 import React from "react";
+import Profile from './Components/profile';
 import { SignInButton, SignOutButton } from './Components/signin';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
@@ -56,6 +57,9 @@ const setName = async (cat, newName) => {
 };
 
 function App() {
+  // the logged in user
+  const [user] = useUserState();
+
   // this gets the data
   const [data, loading, error] = useData('/');
   console.log(data);
@@ -63,15 +67,20 @@ function App() {
   if (error) return <h1>{error}</h1>;
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
-
+  
   
   return (
     <div className="App">
+      { user ? <SignOutButton/> : <SignInButton/> }
       {/* <SignInButton/>
       <SignOutButton/>
       <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats> */}
       <Home />
+     
+      {/* <ListUsers users={ data.users }></ListUsers>
+      <ListCats cats={ data.cats }></ListCats>
+      <Profile /> */}
     </div>
   );
 }
