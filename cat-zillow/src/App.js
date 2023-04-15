@@ -80,9 +80,10 @@ function App() {
   
   return (
     <div className="App">
-      <ListUsers users={ data.users }></ListUsers>
+      {/* <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
-      <Signin />
+      <Signin /> */}
+      <Home />
     </div>
   );
 }
