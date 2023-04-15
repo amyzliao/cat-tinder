@@ -1,13 +1,7 @@
 import { useData, setData, useUserState } from './database/firebase.js';
 import React from "react";
-<<<<<<< HEAD
-import logo from './logo.svg';
-import Signin from './Components/signin';
-import Home from './Components/home';
 import Profile from './Components/profile';
-=======
 import { SignInButton, SignOutButton } from './Components/signin';
->>>>>>> a9a440affb5188929e657448e5d880d98b8823be
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
 
@@ -79,11 +73,7 @@ function App() {
       { user ? <SignOutButton/> : <SignInButton/> }
       <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
-<<<<<<< HEAD
-      <Signin /> */}
       <Profile />
-=======
->>>>>>> a9a440affb5188929e657448e5d880d98b8823be
     </div>
   );
 }
