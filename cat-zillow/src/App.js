@@ -5,6 +5,8 @@ import Signin from './Components/signin';
 import Home from './Components/home';
 import './App.css';
 
+
+
 const ListUsers = ({ users }) => (
   <div>
   { users.map(user => <User user={ user } />) }
@@ -49,9 +51,10 @@ function App() {
   
   return (
     <div className="App">
-      <ListUsers users={ data.users }></ListUsers>
+      <Home />
+      {/* <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
-      <Signin />
+      <Signin /> */}
     </div>
   );
 }
