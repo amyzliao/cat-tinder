@@ -1,15 +1,9 @@
 import { useData, setData } from './database/firebase.js';
 import React from "react";
-<<<<<<< HEAD
-import logo from './logo.svg';
-import Signin from './Components/signin';
-import Home from './Components/home';
-import Profile from './Components/profile';
-=======
 import { SignInButton, SignOutButton } from './Components/signin';
->>>>>>> a9a440affb5188929e657448e5d880d98b8823be
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
+import Home from './Components/home.jsx';
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
@@ -73,15 +67,11 @@ function App() {
   
   return (
     <div className="App">
-      <SignInButton/>
+      {/* <SignInButton/>
       <SignOutButton/>
       <ListUsers users={ data.users }></ListUsers>
-      <ListCats cats={ data.cats }></ListCats>
-<<<<<<< HEAD
-      <Signin /> */}
-      <Profile />
-=======
->>>>>>> a9a440affb5188929e657448e5d880d98b8823be
+      <ListCats cats={ data.cats }></ListCats> */}
+      <Home />
     </div>
   );
 }
