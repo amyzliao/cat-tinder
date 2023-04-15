@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import Signin from './Components/signin';
+import AddCat from './Components/addcat';
 import './App.css';
 
 // function App() {
@@ -26,7 +27,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Signin />
+      <AddCat />
     </div>
   );
 }
