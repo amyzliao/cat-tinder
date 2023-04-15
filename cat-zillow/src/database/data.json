@@ -1,0 +1,31 @@
+{
+    "users": {
+        "0": {
+            "id": "0",
+            "profile": {
+                "name": "bob",
+                "email": "bob@gmail.com",
+                "phone": "123456789",
+                "description": "32 year old man who lives in a high-rise in new york."
+            },
+            "their-cats": [0, 1, 2],
+            "liked-cats": [4, 5, 6],
+            "disliked-cats": [7]
+        },
+        "1": {
+            "id": "1",
+            "profile": {
+                "name": "nancy",
+                "email": "nancy@u.northwestern.edu",
+                "phone": "0000000000",
+                "description": ""
+            },
+            "their-cats": [4, 5, 6, 7],
+            "liked-cats": [],
+            "disliked-cats": []
+        }
+    },
+    "cats": {
+
+    }
+}

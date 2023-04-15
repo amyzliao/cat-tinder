@@ -1,0 +1,16 @@
+database of user
+each user (google authenticated account) has 
+- user id
+- user profile information (name, email, phone, general description)
+- a list of THEIR cats (up for adoption) (cat ids)
+- a list of liked cats (cat ids)
+- a list of disliked cats (cat ids)
+
+database of cats
+each cat has:
+- photo
+- name
+- description (breed, color, age)
+- owner id
+
+
