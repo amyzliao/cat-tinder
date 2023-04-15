@@ -2,7 +2,7 @@ import { useData, setData } from './database/firebase.js';
 import React from "react";
 import logo from './logo.svg';
 import Signin from './Components/signin';
-import AddCat from './Components/addcat';
+import Home from './Components/home';
 import './App.css';
 
 const ListUsers = ({ users }) => (
