@@ -69,7 +69,6 @@ function App() {
       <SignOutButton/>
       <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
-      
     </div>
   );
 }
