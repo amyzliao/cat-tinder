@@ -1,12 +1,22 @@
 import React from "react";
 import '../Styling/signin.css';
+import { signInWithGoogle, signOut } from '../database/firebase.js';
 
-const Signin = () => {
+
+export const SignInButton = () => {
     return (
-        <div class="signin_page">
-            <h1>Log in with Gmail!</h1>
-        </div>
-    )
-}
+        <button
+            onClick={() => signInWithGoogle()}>
+            Sign In
+        </button>
+    );
+};
 
-export default Signin; 
+export const SignOutButton = () => {
+    return (
+        <button
+            onClick={() => signOut()}>
+            Sign Out
+        </button>
+    );
+};
