@@ -55,9 +55,33 @@ const setName = async (cat, newName) => {
   }
 };
 
+const LoggedIn = ({ user, data }) => {
+  return (
+    <div>
+      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      <SignOutButton/>
+      <ListUsers users={ data.users }></ListUsers>
+      <ListCats cats={ data.cats }></ListCats>
+      <Profile />
+    </div>
+  )
+};
+
+const LoggedOut = () => {
+  return (
+    <div>
+      <h4>You are not logged in. Log in to start using cat zillow!</h4>
+      <SignInButton/>
+    </div>
+  )
+};
+  
+
 function App() {
   // the logged in user
   const [user] = useUserState();
+  console.log("user:");
+  console.log(user);
 
   // this gets the data
   const [data, loading, error] = useData('/');
@@ -70,10 +94,7 @@ function App() {
   
   return (
     <div className="App">
-      { user ? <SignOutButton/> : <SignInButton/> }
-      <ListUsers users={ data.users }></ListUsers>
-      <ListCats cats={ data.cats }></ListCats>
-      <Profile />
+      { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut/> }
     </div>
   );
 }
