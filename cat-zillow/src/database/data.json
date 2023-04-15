@@ -1,31 +1,78 @@
 {
-    "users": {
-        "0": {
-            "id": "0",
-            "profile": {
-                "name": "bob",
-                "email": "bob@gmail.com",
-                "phone": "123456789",
-                "description": "32 year old man who lives in a high-rise in new york."
+    "users": [{
+                "user_id": 0,
+                "profile": {
+                    "name": "bob",
+                    "email": "bob@gmail.com",
+                    "phone": "123456789",
+                    "description": "32 year old man who lives in a high-rise in new york."
+                },
+                "their_cats": [0, 1, 2],
+                "liked_cats": [4, 5, 6],
+                "disliked_cats": [3]
             },
-            "their-cats": [0, 1, 2],
-            "liked-cats": [4, 5, 6],
-            "disliked-cats": [7]
+            {
+                "user_id": 1,
+                "profile": {
+                    "name": "nancy",
+                    "email": "nancy@u.northwestern.edu",
+                    "phone": "0000000000",
+                    "description": ""
+                },
+                "their_cats": [3, 4, 5, 6],
+                "liked_cats": [],
+                "disliked_cats": []
+            }
+    ],
+    "cats": [
+        {
+            "cat_id": 0,
+            "photo": "url for cat 0",
+            "name": "chunky boy",
+            "description": "He eats a LOTTTT",
+            "owner": 0
         },
-        "1": {
-            "id": "1",
-            "profile": {
-                "name": "nancy",
-                "email": "nancy@u.northwestern.edu",
-                "phone": "0000000000",
-                "description": ""
-            },
-            "their-cats": [4, 5, 6, 7],
-            "liked-cats": [],
-            "disliked-cats": []
+        {
+            "cat_id": 1,
+            "photo": "url for cat 1",
+            "name": "coder",
+            "description": "meow",
+            "owner": 0
+        },
+        {
+            "cat_id": 2,
+            "photo": "url for cat 2",
+            "name": "sweetie pie",
+            "description": "loves pie",
+            "owner": 0
+        },
+        {
+            "cat_id": 3,
+            "photo": "url for cat 3",
+            "name": "pogman",
+            "description": ":widepeepohappy:",
+            "owner": 1
+        },
+        {
+            "cat_id": 4,
+            "photo": "url for cat 4",
+            "name": "akash",
+            "description": "debater",
+            "owner": 1
+        },
+        {
+            "cat_id": 5,
+            "photo": "url for cat 5",
+            "name": "idiot",
+            "description": "stupid",
+            "owner": 1
+        },
+        {
+            "cat_id": 6,
+            "photo": "url for cat 6",
+            "name": "concrete",
+            "description": "grey",
+            "owner": 1
         }
-    },
-    "cats": {
-
-    }
+    ]
 }
