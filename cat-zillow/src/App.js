@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import Signin from './Components/signin';
 import Home from './Components/home';
 import './App.css';
+import AdoptCat from './Components/adoptcat.jsx';
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
@@ -80,9 +81,10 @@ function App() {
   
   return (
     <div className="App">
+      <AdoptCat />
       <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
-      <Signin />
+
     </div>
   );
 }
