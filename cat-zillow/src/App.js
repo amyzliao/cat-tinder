@@ -1,5 +1,8 @@
 import { useData, setData } from './database/firebase.js';
 import React from "react";
+import logo from './logo.svg';
+import Signin from './Components/signin';
+import './App.css';
 
 const ListUsers = ({ users }) => (
   <div>
@@ -33,7 +36,6 @@ const Cat = ({cat}) => {
   );
 };
 
-
 function App() {
   // this gets the data
   const [data, loading, error] = useData('/');
@@ -48,6 +50,7 @@ function App() {
     <div className="App">
       <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
+      <Signin />
     </div>
   );
 }
