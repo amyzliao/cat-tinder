@@ -5,6 +5,9 @@ import Signin from './Components/signin';
 import Home from './Components/home';
 import './App.css';
 
+
+
+
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
   <div>
@@ -68,6 +71,37 @@ const Pixel = ({ pixel }) => {
   );
 };*/
 
+
+//given data.cats, data.users, cat name, cat description, owner id (hopefully from owner name)
+const addCat = (cats, photo, name, desc, owner_id, users) => {
+  if (photo && name && desc){
+    //if owner_id is a valid user_id
+    for(const user in users){
+      if (user.user_id == owner_id){
+        const new_cat_id = cats.length;
+
+        const new_their_cats = user.their_cats
+        new_their_cats.append(new_cat_id)
+        setData(`/users/${owner_id}/their_cats`, new_their_cats);
+
+        setData(`/cats`, new_cat_id);
+        setData(`/cats/${new_cat_id}/name`, name);
+        setData(`/cats/${new_cat_id}/photo`, photo);
+        setData(`/cats/${new_cat_id}/desc`, desc);
+        setData(`/cats/${new_cat_id}/owner`, owner_id);
+
+        break;
+      }
+    }
+
+  }
+}
+
+const yes = () => {
+
+}
+
+
 function App() {
   // this gets the data
   const [data, loading, error] = useData('/');
@@ -77,13 +111,16 @@ function App() {
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
 
+  //console.log(data.cats.length) --> new cat_id
+
   
   return (
     <div className="App">
       <Home />
-      {/* <ListUsers users={ data.users }></ListUsers>
+      <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
-      <Signin /> */}
+    
+      <Signin />
     </div>
   );
 }
