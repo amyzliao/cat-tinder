@@ -1,4 +1,4 @@
-import { useData, setData } from './database/firebase.js';
+import { useData, setData, useUserState } from './database/firebase.js';
 import React from "react";
 import { SignInButton, SignOutButton } from './Components/signin';
 import './App.css';
@@ -54,6 +54,9 @@ const setName = async (cat, newName) => {
 };
 
 function App() {
+  // the logged in user
+  const [user] = useUserState();
+
   // this gets the data
   const [data, loading, error] = useData('/');
   console.log(data);
@@ -61,12 +64,11 @@ function App() {
   if (error) return <h1>{error}</h1>;
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
-
+  
   
   return (
     <div className="App">
-      <SignInButton/>
-      <SignOutButton/>
+      { user ? <SignOutButton/> : <SignInButton/> }
       <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
     </div>
