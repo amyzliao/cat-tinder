@@ -3,7 +3,7 @@ import '../Styling/signin.css';
 
 const Signin = () => {
     return (
-        <div class="signin_page">
+        <div className="signin_page">
             <h1>Log in with Gmail!</h1>
         </div>
     )

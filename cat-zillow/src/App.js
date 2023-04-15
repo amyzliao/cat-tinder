@@ -3,6 +3,7 @@ import React from "react";
 import logo from './logo.svg';
 import Signin from './Components/signin';
 import Home from './Components/home';
+import Profile from './Components/profile';
 import './App.css';
 
 // DISPLAY LIST OF USERS
@@ -83,7 +84,7 @@ function App() {
       {/* <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
       <Signin /> */}
-      <Home />
+      <Profile />
     </div>
   );
 }
