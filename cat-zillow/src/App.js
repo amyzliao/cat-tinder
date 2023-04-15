@@ -2,6 +2,7 @@ import { useData, setData } from './database/firebase.js';
 import React from "react";
 import { SignInButton, SignOutButton } from './Components/signin';
 import './App.css';
+import AdoptCat from './Components/adoptcat.jsx';
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
