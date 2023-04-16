@@ -1,7 +1,20 @@
 import React from "react";
 import '../Styling/profile.css';
+import { setData, useUserState, signInWithGoogle, signOut } from '../database/firebase.js';
+import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup } from 'firebase/auth';
+import { getCurrentUser } from '../database/firebase.js';
 
-const Profile = () => {
+const set_description = async ( users ) => {
+    const currentUser = getAuth().currentUser;
+    const description = document.getElementById("description").value;
+    try {
+        await setData(`/users/${currentUser.uid}/profile/description`, description);
+    } catch (error) {
+        alert(error);
+    }
+}
+
+const Profile = (users) => {
     return (
         <div className="profile">
             <div className="tophalf">
@@ -11,10 +24,10 @@ const Profile = () => {
                     looking for. 
                 </h1>
                 <div className="blurb">
-                    <textarea rows="20" cols="100">
+                    <textarea id="description" rows="20" cols="100">
                     </textarea>
                 </div>
-                <button className="save">
+                <button className="save" onClick={() => set_description( users={ users })}>
                     <div id="submit-text">Save</div>
                 </button>
             </div>
