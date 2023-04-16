@@ -94,6 +94,7 @@ function App() {
   console.log(user);
 
   const auth = getAuth();
+  const currentUser = getAuth().currentUser;
   console.log("auth");
   console.log(auth);
 
@@ -103,7 +104,7 @@ function App() {
   // if we fail to get data, error. 
   if (error) return <h1>{error}</h1>;
   // while data is loading, display this text
-  if (loading) return <h1>Loading Cat Zillow</h1>;
+  if (loading) return <h1 class = "loading">Loading Cat Zillow</h1>;
   
 
   return (
@@ -112,7 +113,7 @@ function App() {
       { !user ? <></> : 
       <BrowserRouter>
             <Routes>
-                <Route path="/profile" element={<Profile />}/>
+                <Route path="/profile" element={<Profile cats={data.cats}/>}/>
                 <Route path="/adoptcat" element={<AdoptCat data={data} />}/>
                 <Route path="/addcat" element={<AddCat cats={data.cats}/>}/>
                 <Route path="/" element={<Home />}/>

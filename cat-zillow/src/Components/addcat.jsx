@@ -9,6 +9,7 @@ const add_new_cat = (cats, name, desc, photo) => {
 	const newDesc = desc;
 	const newPhoto = photo;
 	const currentUser = getAuth().currentUser;
+	const newArr = [];
 	
 	if(newName != "" && newDesc != "" && newPhoto != ""){
 		alert("Cat Submitted")
@@ -19,6 +20,9 @@ const add_new_cat = (cats, name, desc, photo) => {
 
 		//owner_id
 		setData(`/cats/${new_cat_id}/owner`, currentUser.uid);
+
+		setData(`/users/${currentUser.uid}/their_cats/${new_cat_id}`, new_cat_id);
+
 	}else if(newName == ""){
 		alert("Fill in the Cat's Name!")
 	}else if(newDesc == ""){

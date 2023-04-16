@@ -1,0 +1,12 @@
+.tophalf{
+    position:relative;
+    align-items:center;
+    justify-content: center;
+    width:fit-content;
+    margin:auto;
+}
+
+
+.cat{
+    display:inline-block;
+}

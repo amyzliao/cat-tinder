@@ -40,3 +40,8 @@
 .signin_page h1 {
   text-align: center
 }
+
+.loading{
+  padding-top:10%;
+  text-align:center;
+}

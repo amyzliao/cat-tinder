@@ -9,7 +9,6 @@ const Home = () => {
                     <div id="submit-text">Profile</div>
                 </a>    
             </button>
-
             <div className="adopt-btn">
                 <a className="btn1" href="/adoptcat">
                     <div id="submit-text">Adopt a Cat</div>              
