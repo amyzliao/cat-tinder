@@ -13,8 +13,10 @@ const add_to_liked_list = async ( cat, user ) => {
 }
 
 const AdoptCat = ({data}) => {
-    const user = data.users.users[0];
-    const cat = data.users.cats[0];
+    console.log(data.users);
+    console.log(data.cats);
+    const user = data.users['00000000000000000'];
+    const cat = data.cats[0];
     
     const liked_list = (event) => {
         add_to_liked_list(cat, user);

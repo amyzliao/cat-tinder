@@ -112,7 +112,7 @@ function App() {
       <BrowserRouter>
             <Routes>
                 <Route path="/profile" element={<Profile />}/>
-                <Route path="/adoptcat" element={<AdoptCat />}/>
+                <Route path="/adoptcat" element={<AdoptCat data={data} />}/>
                 <Route path="/addcat" element={<AddCat cats={data.cats} owner = {user} />}/>
                 <Route path="/" element={<Home />}/>
             </Routes>
