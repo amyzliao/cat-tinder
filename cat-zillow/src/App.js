@@ -1,13 +1,18 @@
-import { useData, setData } from './database/firebase.js';
+import { useData, setData, useUserState, getCurrentUser } from './database/firebase.js';
 import React from "react";
+import Profile from './Components/profile';
 import { SignInButton, SignOutButton } from './Components/signin';
+import {AddCat} from './Components/addcat';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
+import { getAuth } from 'firebase/auth';
+import Home from './Components/home.jsx';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
   <div>
-  { users.map(user => <User user={ user } />) }
+  { Object.values(users).map(user => <User user={ user } />) }
   </div>
 );
 const User = ({user}) => {
@@ -47,14 +52,50 @@ const getNewName = cat => {
 const setName = async (cat, newName) => {
   if (newName && window.confirm(`Change ${cat.name} to ${newName}?`)) {
     try {
-      await setData(`/cats/${cat.cat_id}/photo`, newName);
+      await setData(`/cats/${cat.cat_id}/name`, newName);
     } catch (error) {
       alert(error);
     }
   }
 };
 
+// ONLY DISPLAY THE STUFF IF THE USER IS LOGGED IN
+const LoggedIn = ({ user, data }) => {
+  return (
+    <div>
+      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      <SignOutButton/>
+      <button className = 'home'>
+                <a className='hi' href="/">
+                    <div id="submit-text">Home</div>
+                </a>    
+      </button>
+      {/* <Home/> */}
+      {/* <ListUsers users={ data.users }></ListUsers>
+      <ListCats cats={ data.cats }></ListCats>
+      <Profile /> */}
+    </div>
+  )
+};
+const LoggedOut = ( users ) => {
+  return (
+    <div>
+      <h4>You are not logged in. Log in to start using cat zillow!</h4>
+      <SignInButton users={ users }/>
+    </div>
+  )
+};
+
 function App() {
+  // the logged in user
+  const [user] = useUserState();
+  console.log("user:");
+  console.log(user);
+
+  const auth = getAuth();
+  console.log("auth");
+  console.log(auth);
+
   // this gets the data
   const [data, loading, error] = useData('/');
   console.log(data);
@@ -62,12 +103,22 @@ function App() {
   if (error) return <h1>{error}</h1>;
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
-
   
+
   return (
     <div className="App">
-      {console.log(data.cats)};
-      <AdoptCat users={ data } />
+      { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut users={ data.users }/> }
+      { !user ? <></> : 
+      <BrowserRouter>
+            <Routes>
+                <Route path="/profile" element={<Profile />}/>
+                <Route path="/adoptcat" element={<AdoptCat />}/>
+                <Route path="/addcat" element={<AddCat cats={data.cats} owner = {user} />}/>
+                <Route path="/" element={<Home />}/>
+            </Routes>
+      </BrowserRouter> 
+      }
+      {/* <Home />  */}
     </div>
   );
 }

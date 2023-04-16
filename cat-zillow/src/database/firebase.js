@@ -4,12 +4,14 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, ref, set } from 'firebase/database';
 import { useState, useEffect } from 'react';
 import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later,measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCPZMwLnFOWp6ArdY50uJQu7wbJuXeOrt0",
   authDomain: "cat-tinder-a0de9.firebaseapp.com",
@@ -22,7 +24,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
@@ -55,9 +57,17 @@ export const setData = (path, value) => (
     set(ref(database, path), value)
 );
 
-export const signInWithGoogle = () => {
-    signInWithPopup(getAuth(app), new GoogleAuthProvider());
+export const  signInWithGoogle = async () => {
+    await signInWithPopup(getAuth(app), new GoogleAuthProvider());
 };
+
+export const useUserState = () => useAuthState(getAuth(app));
 
 const firebaseSignOut = () => signOut(getAuth(app));
 export { firebaseSignOut as signOut };
+
+export const getCurrentUser = () => {
+    return (
+        getAuth().currentUser
+    );
+};
