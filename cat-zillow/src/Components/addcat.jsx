@@ -2,8 +2,9 @@ import {React, useState} from "react";
 import { useData, setData } from '../database/firebase.js';
 import '../Styling/addcat.css';
 import Upload from './image_upload.jsx';
+import onFileUpload from './image_upload.jsx';
 
-const add_new_cat = async (cats, name, desc, photo, owner) => {
+const add_new_cat = (cats, name, desc, photo, owner) => {
 	const new_cat_id = cats.length;
 	const newName = name;
 	const newDesc = desc;
@@ -42,6 +43,7 @@ export const AddCat = ({cats, owner}) => {
     setUpdated(name);
 	setUpdated1(desc);
 	add_new_cat(cats, name, desc, owner)
+	onFileUpload();
   };
 
   return (
