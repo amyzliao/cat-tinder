@@ -61,22 +61,28 @@ export const AddCat = ({cats}) => {
   return (
 	<div class="add_cat">
 		<h1>Add Cat Form</h1>
-		<form>
-			<label>Name of Cat</label> <br />
-			<input type="text" onChange={handleChange} value={name}/> <br /><br />
-			
-			<label>Description</label> <br />
-			<div>State age, gender, breed, medical history, and any other relevant information.</div>
-			<input type="text" onChange={handleChange1} value={desc}/> <br /><br />
+			<label> Cat Name</label>
+			<div class="input-group w-25 mx-auto">
+  				<input onChange={handleChange} value={name} type="text" class="form-control" placeholder="" aria-label="Cat Name" aria-describedby="basic-addon1" />
+			</div>
+
+			<label> Description</label>
+			<div class="input-group w-25 mx-auto">
+  				<input onChange={handleChange1} value={desc} type="text" class="form-control" placeholder="State age, gender, breed, medical history, and any other info." aria-label="Cat Name" aria-describedby="basic-addon1" />
+			</div>
 
 			<label>Image of Cat URL</label> <br />
 			<div>Please input the Sharing URL of the Google Drive image of the cat. </div><br/>
 			<div>1. Upload your picture on your Google Drive.</div>
 			<div>2. Copy the Sharing Link of the Image. Make sure anyone with the link can view it.</div>
-			<div>3. Paste the sharing URL of the image below.</div><br/>
-			<input type="text" onChange={handleChange2} value={photo}/> <br /><br />
+			<div>3. Paste the sharing URL of the image below.</div>
 			
-		</form>
+			<div class="input-group w-25 mx-auto">
+  				<input onChange={handleChange2} value={photo} type="text" class="form-control" placeholder="" aria-label="Cat URL" aria-describedby="basic-addon1" />
+			</div>
+
+			{/* <input type="text" onChange={handleChange2} value={photo}/> <br /><br /> */}
+			
 			<button onClick={handleClick}>Submit</button>
     </div>
     
