@@ -96,6 +96,7 @@ function App() {
     <div className="App">
       <AddCat cats={ data.cats } owner = {user}/>
       { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut/> }
+      
     </div>
   );
 }
