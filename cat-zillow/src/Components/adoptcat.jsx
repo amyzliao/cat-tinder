@@ -7,18 +7,21 @@ import { getAuth } from 'firebase/auth';
 const add_to_liked_list = async ( cat, data ) => {
     const new_id = cat.cat_id;
     const currentUser = getAuth().currentUser;
+    const uid = currentUser.uid; 
     try {
         //if (Object.hasOwn(currentUser.uid, "liked_cats")) {
-        if (true) {
-            console.log(currentUser.uid.liked_cats)
-            console.log("do we get inside this if statement");
-            const length = data.users.currentUser.uid.liked_cats; 
-            setData(`/users/${currentUser.uid}/liked_cats/length`, new_id);
-        } else {
-            await setData(`/users/${currentUser.uid}/liked_cats`, [new_id]);
-        }
+        // if (currentUser.uid.hasOwnProperty("liked_cats")) {
+            // console.log(currentUser.uid.liked_cats)
+            // console.log("do we get inside this if statement");
+            console.log(currentUser.uid.liked_cats);
+            const len = currentUser.uid.liked_cats.length; 
+            setData(`/users/${currentUser.uid}/liked_cats/${len}`, new_id);
+            console.log("Does this also work?");
+        // } else {
+        // }
     } catch(error) {
         alert(error);
+        await setData(`/users/${currentUser.uid}/liked_cats`, [new_id]);
     }
 }
 
