@@ -2,6 +2,7 @@ import { useData, setData, useUserState } from './database/firebase.js';
 import React from "react";
 import Profile from './Components/profile';
 import { SignInButton, SignOutButton } from './Components/signin';
+import {AddCat} from './Components/addcat';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
 import AddCat from './Components/addcat.jsx';
@@ -52,7 +53,7 @@ const getNewName = cat => {
 const setName = async (cat, newName) => {
   if (newName && window.confirm(`Change ${cat.name} to ${newName}?`)) {
     try {
-      await setData(`/cats/${cat.cat_id}/photo`, newName);
+      await setData(`/cats/${cat.cat_id}/name`, newName);
     } catch (error) {
       alert(error);
     }
@@ -100,8 +101,7 @@ function App() {
   if (error) return <h1>{error}</h1>;
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
-  
-  
+
   return (
     <div className="App">
       { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut/>}
