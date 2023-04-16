@@ -78,7 +78,7 @@ export const AddCat = ({cats}) => {
 
 			{/* <input type="text" onChange={handleChange2} value={photo}/> <br /><br /> */}
 			
-			<button onClick={handleClick}>Submit</button>
+			<button class="btn btn-primary" onClick={handleClick}>Submit</button>
     </div>
     
   );
