@@ -28,10 +28,10 @@
     "cats": [
         {
             "cat_id": 0,
-            "photo": "url for cat 0",
+            "photo": "https://cdn.discordapp.com/attachments/1094097704428245052/1097012273744199690/IMG_2738.png",
             "name": "chunky boy",
             "description": "He eats a LOTTTT",
-            "owner": 0
+            "owner": "00000000000000000"
         },
         {
             "cat_id": 1,
