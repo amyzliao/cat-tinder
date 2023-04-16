@@ -6,6 +6,8 @@ import {AddCat} from './Components/addcat';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
 import { getAuth } from 'firebase/auth';
+import Home from './Components/home.jsx';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
@@ -63,9 +65,15 @@ const LoggedIn = ({ user, data }) => {
     <div>
       <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
       <SignOutButton/>
-      <ListUsers users={ data.users }></ListUsers>
+      <button className = 'home'>
+                <a className='hi' href="/">
+                    <div id="submit-text">Home</div>
+                </a>    
+      </button>
+      {/* <Home/> */}
+      {/* <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
-      <Profile />
+      <Profile /> */}
     </div>
   )
 };
@@ -99,9 +107,18 @@ function App() {
 
   return (
     <div className="App">
-      <AddCat cats={ data.cats } owner = {user}/>
       { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut users={ data.users }/> }
-      
+      { !user ? <></> : 
+      <BrowserRouter>
+            <Routes>
+                <Route path="/profile" element={<Profile />}/>
+                <Route path="/adoptcat" element={<AdoptCat />}/>
+                <Route path="/addcat" element={<AddCat cats={data.cats} owner = {user} />}/>
+                <Route path="/" element={<Home />}/>
+            </Routes>
+      </BrowserRouter> 
+      }
+      {/* <Home />  */}
     </div>
   );
 }
