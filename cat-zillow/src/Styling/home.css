@@ -3,6 +3,15 @@
     float: right;
     padding: 2vh;
     border-radius: 75%;
+    width: 1vw;
+    height: 1vh;
+}
+
+.pls {
+    width: auto;
+    height: auto;
+    max-width: 10px; 
+    max-height: 30px;
 }
 
 .adopt-btn{

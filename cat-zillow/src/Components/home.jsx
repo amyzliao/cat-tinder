@@ -6,8 +6,8 @@ const Home = () => {
         <div className="home">
             <button className = 'profile'>
                 <a className='wtf' href="/profile">
-                    <div id="submit-text">Profile</div>
-                </a>    
+                    <img src="https://img.favpng.com/12/2/15/user-profile-computer-icons-button-png-favpng-93N16Mhz23EU2tKQrjLDMktYh.jpg" height="20%" width="20%" />
+                </a>   
             </button>
 
             <div className="adopt-btn">

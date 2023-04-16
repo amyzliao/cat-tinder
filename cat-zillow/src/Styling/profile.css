@@ -1,0 +1,16 @@
+.tophalf {
+    color: #405ac2;
+    padding-top: 2%;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+#submit-text {
+    font-weight: bold;
+}
+.blurb {
+    outline-color: blue;
+}
+
+.save {
+    font-weight: bold;
+}
