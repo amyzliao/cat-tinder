@@ -16,7 +16,7 @@ const add_new_cat = (cats, name, desc, photo, owner) => {
 		setData(`/cats/${new_cat_id}/cat_id`, new_cat_id);
 		setData(`/cats/${new_cat_id}/name`, newName);
 		setData(`/cats/${new_cat_id}/description`, newDesc);
-		setData(`/cats/${new_cat_id}/photo`, newPhoto);
+		// setData(`/cats/${new_cat_id}/photo`, newPhoto);
 
 		//owner_id
 		// setData(`/cats/${new_cat_id}/owner`, owner);
@@ -44,7 +44,7 @@ export const AddCat = ({cats, owner}) => {
     setUpdated(name);
 	setUpdated1(desc);
 	add_new_cat(cats, name, desc, owner)
-	onFileUpload();
+	// onFileUpload();
   };
 
   return (
@@ -59,7 +59,7 @@ export const AddCat = ({cats, owner}) => {
 			<input type="text" onChange={handleChange1} value={desc}/> <br /><br />
 
 			{/*Label for image*/}
-			<Upload/>
+			{/* <Upload/> */}
 		</form>
 			<button onClick={handleClick}>Submit</button>
     </div>
