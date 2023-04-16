@@ -24,7 +24,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
@@ -57,8 +57,8 @@ export const setData = (path, value) => (
     set(ref(database, path), value)
 );
 
-export const signInWithGoogle = () => {
-    signInWithPopup(getAuth(app), new GoogleAuthProvider());
+export const  signInWithGoogle = async () => {
+    await signInWithPopup(getAuth(app), new GoogleAuthProvider());
 };
 
 export const useUserState = () => useAuthState(getAuth(app));
@@ -70,4 +70,4 @@ export const getCurrentUser = () => {
     return (
         getAuth().currentUser
     );
-}
+};

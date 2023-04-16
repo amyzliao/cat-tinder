@@ -2,9 +2,10 @@ import { useData, setData, useUserState, getCurrentUser } from './database/fireb
 import React from "react";
 import Profile from './Components/profile';
 import { SignInButton, SignOutButton } from './Components/signin';
+import {AddCat} from './Components/addcat';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
-
+import { getAuth } from 'firebase/auth';
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
@@ -49,7 +50,7 @@ const getNewName = cat => {
 const setName = async (cat, newName) => {
   if (newName && window.confirm(`Change ${cat.name} to ${newName}?`)) {
     try {
-      await setData(`/cats/${cat.cat_id}/photo`, newName);
+      await setData(`/cats/${cat.cat_id}/name`, newName);
     } catch (error) {
       alert(error);
     }
@@ -68,11 +69,11 @@ const LoggedIn = ({ user, data }) => {
     </div>
   )
 };
-const LoggedOut = () => {
+const LoggedOut = ( users ) => {
   return (
     <div>
       <h4>You are not logged in. Log in to start using cat zillow!</h4>
-      <SignInButton/>
+      <SignInButton users={ users }/>
     </div>
   )
 };
@@ -83,7 +84,7 @@ function App() {
   console.log("user:");
   console.log(user);
 
-  const auth = getCurrentUser();
+  const auth = getAuth();
   console.log("auth");
   console.log(auth);
 
@@ -95,9 +96,12 @@ function App() {
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
   
+
   return (
     <div className="App">
-      { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut/> }
+      <AddCat cats={ data.cats } owner = {user}/>
+      { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut users={ data.users }/> }
+      
     </div>
   );
 }
