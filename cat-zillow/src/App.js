@@ -1,11 +1,10 @@
-import { useData, setData } from './database/firebase.js';
+import { useData, setData, useUserState } from './database/firebase.js';
 import React from "react";
+import Profile from './Components/profile';
 import { SignInButton, SignOutButton } from './Components/signin';
 import {AddCat} from './Components/addcat';
 import './App.css';
-
-
-
+import AdoptCat from './Components/adoptcat.jsx';
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
@@ -50,33 +49,41 @@ const getNewName = cat => {
 const setName = async (cat, newName) => {
   if (newName && window.confirm(`Change ${cat.name} to ${newName}?`)) {
     try {
-      await setData(`/cats/${cat.cat_id}/photo`, newName);
+      await setData(`/cats/${cat.cat_id}/name`, newName);
     } catch (error) {
       alert(error);
     }
   }
 };
 
-/*
-const Pixel = ({ pixel }) => {
+const LoggedIn = ({ user, data }) => {
   return (
     <div>
-      <div>
-        location: { pixel.id } ; color: { pixel.color }
-      </div>
-      <button onClick={() => setColor(pixel, getNewColor(pixel))}>Change color</button>
-      <button onClick={() => setId(pixel, getNewId(pixel))}>Change id</button>
+      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      <SignOutButton/>
+      <ListUsers users={ data.users }></ListUsers>
+      <ListCats cats={ data.cats }></ListCats>
+      <Profile />
     </div>
-  );
-};*/
+  )
+};
 
-
-const yes = () => {
-
-}
-
+const LoggedOut = () => {
+  return (
+    <div>
+      <h4>You are not logged in. Log in to start using cat zillow!</h4>
+      <SignInButton/>
+    </div>
+  )
+};
+  
 
 function App() {
+  // the logged in user
+  const [user] = useUserState();
+  console.log("user:");
+  console.log(user);
+
   // this gets the data
   const [data, loading, error] = useData('/');
   console.log(data);
@@ -85,17 +92,10 @@ function App() {
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
 
-  //console.log(data.cats.length) --> new cat_id
-
-  
   return (
     <div className="App">
-      <AddCat/>
-
-      {/* <SignInButton/>
-      <SignOutButton/>
-      <ListUsers users={ data.users }></ListUsers>
-      <ListCats cats={ data.cats }></ListCats> */}
+      <AddCat cats={ data.cats } owner = {user}/>
+      { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut/> }
     </div>
   );
 }

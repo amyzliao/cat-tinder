@@ -1,32 +1,28 @@
 import {React, useState} from "react";
 import { useData, setData } from '../database/firebase.js';
+import '../Styling/addcat.css';
 
-//given data.cats, data.users, cat name, cat description, owner id (hopefully from owner name)
-const add_new_cat = (cats, photo, name, desc, owner_id, users) => {
-	if (photo && name && desc){
-	  //if owner_id is a valid user_id
-	  for(const user in users){
-		if (user.user_id == owner_id){
-		  const new_cat_id = cats.length;
-  
-		  const new_their_cats = user.their_cats
-		  new_their_cats.append(new_cat_id)
-		//   setData(`/users/${owner_id}/their_cats`, new_their_cats);
-  
-		  setData(`/cats`, new_cat_id);
-		  setData(`/cats/${new_cat_id}/name`, name);
-		  setData(`/cats/${new_cat_id}/photo`, photo);
-		  setData(`/cats/${new_cat_id}/desc`, desc);
-		  setData(`/cats/${new_cat_id}/owner`, owner_id);
-  
-		  break;
-		}
-	  }
-  
-	}
+const add_new_cat = async (cats, name, desc, photo, owner) => {
+	const new_cat_id = cats.length;
+	const newName = name;
+	const newDesc = desc;
+	const newPhoto = photo;
+	
+	if(newName != "" & newDesc != ""){
+		setData(`/cats/${new_cat_id}/cat_id`, new_cat_id);
+		setData(`/cats/${new_cat_id}/name`, newName);
+		setData(`/cats/${new_cat_id}/description`, newDesc);
+		setData(`/cats/${new_cat_id}/photo`, newPhoto);
+
+		//owner_id
+		// setData(`/cats/${new_cat_id}/owner`, owner);
+		alert("Cat Submitted")
+	}else{
+		alert("Fill in All Cat Info!")
+	}	
 }
 
-export const AddCat = (cats, users) => {
+export const AddCat = ({cats, owner}) => {
 	const [name, setName] = useState('');
 	const [desc, setDesc] = useState('');
 	const [photo, setPhoto] = useState('');
@@ -44,30 +40,23 @@ export const AddCat = (cats, users) => {
   const handleClick = () => {
     setUpdated(name);
 	setUpdated1(desc);
-	add_new_cat(cats, photo, updated, updated1, users)
+	add_new_cat(cats, name, desc, owner)
   };
 
   return (
 	<div class="add_cat">
+		<h1>Add Cat Form</h1>
 		<form>
-			<label>Name</label> <br />
-			<input type="text" onChange={handleChange} value={name}/> <br />
+			<label>Name of Cat</label> <br />
+			<input type="text" onChange={handleChange} value={name}/> <br /><br />
 			
 			<label>Description</label> <br />
-			<input type="text" onChange={handleChange1} value={desc}/> <br />
+			<div>State age, gender, breed, medical history, and any other relevant information.</div>
+			<input type="text" onChange={handleChange1} value={desc}/> <br /><br />
 
 			{/*Label for image*/}
 		</form>
-
-
-
-			<h2>Name: {updated}</h2>
-			<h2>Description: {updated1}</h2>
-
 			<button onClick={handleClick}>Submit</button>
-
-			{/* <button onClick={() => add_new_cat(cats, photo, updated, updated1, owner_id, users)}> Submit </button> */}
-			{/* <button onClick={() => > Submit </button> */}
     </div>
     
   );
