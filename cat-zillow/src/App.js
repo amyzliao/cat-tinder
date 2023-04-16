@@ -1,14 +1,15 @@
-import { useData, setData, useUserState } from './database/firebase.js';
+import { useData, setData, useUserState, getCurrentUser } from './database/firebase.js';
 import React from "react";
 import Profile from './Components/profile';
 import { SignInButton, SignOutButton } from './Components/signin';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
 
+
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
   <div>
-  { users.map(user => <User user={ user } />) }
+  { Object.values(users).map(user => <User user={ user } />) }
   </div>
 );
 const User = ({user}) => {
@@ -55,6 +56,7 @@ const setName = async (cat, newName) => {
   }
 };
 
+// ONLY DISPLAY THE STUFF IF THE USER IS LOGGED IN
 const LoggedIn = ({ user, data }) => {
   return (
     <div>
@@ -66,7 +68,6 @@ const LoggedIn = ({ user, data }) => {
     </div>
   )
 };
-
 const LoggedOut = () => {
   return (
     <div>
@@ -75,13 +76,16 @@ const LoggedOut = () => {
     </div>
   )
 };
-  
 
 function App() {
   // the logged in user
   const [user] = useUserState();
   console.log("user:");
   console.log(user);
+
+  const auth = getCurrentUser();
+  console.log("auth");
+  console.log(auth);
 
   // this gets the data
   const [data, loading, error] = useData('/');
@@ -90,7 +94,6 @@ function App() {
   if (error) return <h1>{error}</h1>;
   // while data is loading, display this text
   if (loading) return <h1>Loading Cat Zillow</h1>;
-  
   
   return (
     <div className="App">

@@ -1,6 +1,7 @@
 {
-    "users": [{
-                "user_id": 0,
+    "users": {
+        "00000000000000000": {
+                "uid": "00000000000000000",
                 "profile": {
                     "name": "bob",
                     "email": "bob@gmail.com",
@@ -8,11 +9,11 @@
                     "description": "32 year old man who lives in a high-rise in new york."
                 },
                 "their_cats": [0, 1, 2],
-                "liked_cats": [4, 5, 6],
+                "liked_cats": [5, 6],
                 "disliked_cats": [3]
             },
-            {
-                "user_id": 1,
+        "00000000000000001": {
+                "uid": "00000000000000001",
                 "profile": {
                     "name": "nancy",
                     "email": "nancy@u.northwestern.edu",
@@ -20,10 +21,10 @@
                     "description": ""
                 },
                 "their_cats": [3, 4, 5, 6],
-                "liked_cats": [],
+                "liked_cats": [0, 2],
                 "disliked_cats": []
             }
-    ],
+        },
     "cats": [
         {
             "cat_id": 0,
