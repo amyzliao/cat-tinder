@@ -59,6 +59,7 @@ const setName = async (cat, newName) => {
   }
 };
 
+
 // ONLY DISPLAY THE STUFF IF THE USER IS LOGGED IN
 const LoggedIn = ({ user, data }) => {
   return (

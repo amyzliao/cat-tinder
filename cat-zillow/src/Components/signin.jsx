@@ -60,18 +60,18 @@ if(thisSession.hasOwnProperty('merchant_id')){
             */
 
 const signInBehavior = async ( users ) => {
-    console.log('hit hit hit')
-    console.log(users);
+    // console.log('hit hit hit')
+    // console.log(users);
     const response = await signInWithPopup(auth, provider);
     const currentUser = response.user;
     // console.log("fish");
     // console.log(response.user.uid);
     
     // if this person has not signed in before, add to users database
-    console.log("pip");
-    console.log(users.users.users.users);
+    // console.log("pip");
+    // console.log(users.users.users.users);
     const usersFR = users.users.users.users;
-    console.log("squieak");
+    // console.log("squieak");
     // has this person signed in before?
     if (usersFR.hasOwnProperty(currentUser.uid)) {
         console.log("user not added, they already exist");
