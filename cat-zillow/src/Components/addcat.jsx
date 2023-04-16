@@ -19,7 +19,14 @@ const add_new_cat = (cats, name, desc, photo) => {
 
 		//owner_id
 		setData(`/cats/${new_cat_id}/owner`, currentUser.uid);
-	}else{
+	}else if(newName == ""){
+		alert("Fill in the Cat's Name!")
+	}else if(newDesc == ""){
+		alert("Fill in the Description of the Cat!")
+	}else if (newPhoto == ""){
+		alert("Paste the Photo URL of the Cat!")
+	}
+	else{
 		alert("Fill in All Cat Info!")
 	}	
 }
@@ -28,9 +35,9 @@ export const AddCat = ({cats}) => {
 	const [name, setName] = useState('');
 	const [desc, setDesc] = useState('');
 	const [photo, setPhoto] = useState('');
-	const [setUpdated] = useState('');
-	const [setUpdated1] = useState('');
-	const [setUpdated2] = useState('');
+	const [updated, setUpdated] = useState('');
+	const [updated1, setUpdated1] = useState('');
+	const [updated2, setUpdated2] = useState('');
 
   const handleChange = (event) => {
     setName(event.target.value);
@@ -63,7 +70,10 @@ export const AddCat = ({cats}) => {
 			<input type="text" onChange={handleChange1} value={desc}/> <br /><br />
 
 			<label>Image of Cat URL</label> <br />
-			<div>Please input the URL of the image of the cat.</div>
+			<div>Please input the Sharing URL of the Google Drive image of the cat. </div><br/>
+			<div>1. Upload your picture on your Google Drive.</div>
+			<div>2. Copy the Sharing Link of the Image. Make sure anyone with the link can view it.</div>
+			<div>3. Paste the sharing URL of the image below.</div><br/>
 			<input type="text" onChange={handleChange2} value={photo}/> <br /><br />
 			
 		</form>
