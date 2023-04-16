@@ -1,12 +1,5 @@
 import React from "react";
 import '../Styling/home.css';
-import Profile from './profile.jsx';
-import AdoptCat from './adoptcat.jsx';
-import AddCat from './addcat.jsx';
-import Router from './router.jsx';
-
-
-import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 const Home = () => {
     return (
@@ -16,6 +9,7 @@ const Home = () => {
                     <div id="submit-text">Profile</div>
                 </a>    
             </button>
+
             <div className="adopt-btn">
                 <a className="btn1" href="/adoptcat">
                     <div id="submit-text">Adopt a Cat</div>              
