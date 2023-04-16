@@ -85,9 +85,9 @@ const signInBehavior = async ( users ) => {
                 "phone": currentUser.phoneNumber,
                 "description": ""
             },
-            "their_cats": [],
-            "liked_cats": [],
-            "disliked_cats": []
+            "their_cats": [""],
+            "liked_cats": [""],
+            "disliked_cats": [""]
         }
         // add it to database
         try {
