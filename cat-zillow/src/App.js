@@ -84,8 +84,9 @@ const LoggedIn = ({ user, data }) => {
 };
 const LoggedOut = ( users ) => {
   return (
-    <div>
-      <h4>You are not logged in. Log in to start using cat zillow!</h4>
+    <div class="jumbotron jumbotron-fluid">
+      <h1 class="display-6">You are not logged in.</h1> 
+      <p class="lead">Log in to start using cat zillow!</p>
       <SignInButton users={ users }/>
     </div>
   )

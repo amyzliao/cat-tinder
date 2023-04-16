@@ -128,7 +128,7 @@ const addNewUser = async ( users ) => {
 
 export const SignInButton = ( users ) => {
     return (
-        <button
+        <button class="btn btn-primary btn"
             onClick={() => signInBehavior( users={ users })}>
             Log in with Google
         </button>
