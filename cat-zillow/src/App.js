@@ -66,7 +66,8 @@ function App() {
   
   return (
     <div className="App">
-      <AdoptCat />
+      {console.log(data.cats)};
+      <AdoptCat users={ data } />
     </div>
   );
 }
