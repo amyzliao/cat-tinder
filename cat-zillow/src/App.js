@@ -66,10 +66,7 @@ function App() {
   
   return (
     <div className="App">
-      <SignInButton/>
-      <SignOutButton/>
-      <ListUsers users={ data.users }></ListUsers>
-      <ListCats cats={ data.cats }></ListCats>
+      <AdoptCat />
     </div>
   );
 }

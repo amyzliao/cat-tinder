@@ -1,14 +1,22 @@
 import React from "react";
-import { useData } from '../database/firebase.js';
+import { useData, setData } from '../database/firebase.js';
 import '../Styling/adoptcat.css'
 
-const AdoptCat = () => {
+
+
+function AdoptCat() {
+    const path = "/users/1/liked_cats";
+    const l = useData(path); 
+    function AddToLikedCatList() {
+        setData(path, l.push('1'));
+    }
+
     return (
-    	<div class="adopt_cat">
-            <img class="adopt_cat_img" src={useData('/cats/0/photo')} alt="adopt a cat!" />
+    	<div className="adopt_cat">
+            <img className="adopt_cat_img" src={useData('/cats/0/photo')} alt="adopt a cat!" />
             <hr />
             {/* Check mark */}
-            <button className="button">
+            <button className="button" onClick={AddToLikedCatList}>
                 <img className="button_img" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Eo_circle_light-green_checkmark.svg" alt="Check mark" />
             </button>
             {/* Question mark */}
@@ -19,9 +27,7 @@ const AdoptCat = () => {
             <button className="button">
             <img className="button_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/150px-Red_X.svg.png?20070510203255" alt="Big Red X" />
             </button>
-
         </div>
     )
 }
-
 export default AdoptCat; 
