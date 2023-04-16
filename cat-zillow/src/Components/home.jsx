@@ -1,29 +1,30 @@
 import React from "react";
 import '../Styling/home.css';
 import Profile from './profile.jsx';
+import AdoptCat from './adoptcat.jsx';
+import AddCat from './addcat.jsx';
+import Router from './router.jsx';
+
 
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 const Home = () => {
     return (
-        <div class="home">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/profile" element={<Profile />}/>
-                </Routes>
-            </BrowserRouter>
+        <div className="home">
             <button className = 'profile'>
+                <a className='wtf' href="/profile">
                     <div id="submit-text">Profile</div>
+                </a>    
             </button>
             <div className="adopt-btn">
-                <button className="btn1">
+                <a className="btn1" href="/adoptcat">
                     <div id="submit-text">Adopt a Cat</div>              
-                </button>
+                </a>
             </div>
             <div className="add-btn">
-                <button className = 'btn2'>
+                <a className='btn2' href="/addcat">
                     <div id="submit-text">Add a Cat</div>
-                </button>
+                </a>
             </div>   
         </div>
     )

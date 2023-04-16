@@ -4,7 +4,10 @@ import Profile from './Components/profile';
 import { SignInButton, SignOutButton } from './Components/signin';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
+import AddCat from './Components/addcat.jsx';
 import Home from './Components/home.jsx';
+
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
@@ -56,9 +59,39 @@ const setName = async (cat, newName) => {
   }
 };
 
+const LoggedIn = ({ user, data }) => {
+  return (
+    <div>
+      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      <SignOutButton/>
+      <button className = 'home'>
+                <a className='hi' href="/">
+                    <div id="submit-text">Home</div>
+                </a>    
+      </button>
+      {/* <Home/> */}
+      {/* <ListUsers users={ data.users }></ListUsers>
+      <ListCats cats={ data.cats }></ListCats>
+      <Profile /> */}
+    </div>
+  )
+};
+
+const LoggedOut = () => {
+  return (
+    <div>
+      <h4>You are not logged in. Log in to start using cat zillow!</h4>
+      <SignInButton/>
+    </div>
+  )
+};
+  
+
 function App() {
   // the logged in user
   const [user] = useUserState();
+  console.log("user:");
+  console.log(user);
 
   // this gets the data
   const [data, loading, error] = useData('/');
@@ -71,16 +104,18 @@ function App() {
   
   return (
     <div className="App">
-      { user ? <SignOutButton/> : <SignInButton/> }
-      {/* <SignInButton/>
-      <SignOutButton/>
-      <ListUsers users={ data.users }></ListUsers>
-      <ListCats cats={ data.cats }></ListCats> */}
-      <Home />
-     
-      {/* <ListUsers users={ data.users }></ListUsers>
-      <ListCats cats={ data.cats }></ListCats>
-      <Profile /> */}
+      { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut/>}
+      { !user ? <></> : 
+      <BrowserRouter>
+            <Routes>
+                <Route path="/profile" element={<Profile />}/>
+                <Route path="/adoptcat" element={<AdoptCat />}/>
+                <Route path="/addcat" element={<AddCat />}/>
+                <Route path="/" element={<Home />}/>
+            </Routes>
+      </BrowserRouter> 
+}
+      {/* <Home />  */}
     </div>
   );
 }

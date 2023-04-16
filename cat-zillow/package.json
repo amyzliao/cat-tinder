@@ -10,12 +10,9 @@
     "firebase": "^9.19.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-router-dom": "^6.10.0",
-=======
     "react-firebase-auth-hooks": "^1.0.0",
     "react-firebase-hooks": "^5.1.1",
->>>>>>> ef7f32be956279cc0051c4ef3d2cd9e92efa33d7
+    "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
