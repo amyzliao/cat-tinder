@@ -11,12 +11,12 @@ const Home = () => {
             </button>
 
             <div className="adopt-btn">
-                <a className="btn1" href="/adoptcat">
+                <a className="btn1 btn btn-lg btn-dark" href="/adoptcat" role="button">
                     <div id="submit-text">Adopt a Cat</div>              
                 </a>
             </div>
             <div className="add-btn">
-                <a className='btn2' href="/addcat">
+                <a className='btn2 btn btn-lg btn-dark' href="/addcat">
                     <div id="submit-text">Add a Cat</div>
                 </a>
             </div>   

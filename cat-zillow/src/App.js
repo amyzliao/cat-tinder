@@ -73,7 +73,7 @@ const LoggedIn = ({ user, data }) => {
       <h1 class="display-6">You are signed in.</h1>
       <p class="lead"> Your name is { user.displayName } and your email is { user.email }. </p>
       <SignOutButton/>
-      <a href="/" class='btn btn-primary btn-lg' role="button">Home</a>
+      <a href="/" class='btn btn-primary btn' role="button">Home</a>
 
       {/* <Home/> */}
       {/* <ListUsers users={ data.users }></ListUsers>
