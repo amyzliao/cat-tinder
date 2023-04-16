@@ -1,26 +1,34 @@
 import React from "react";
 import { useData, setData } from '../database/firebase.js';
-import '../Styling/adoptcat.css'
+import '../Styling/adoptcat.css';
+import { getAuth } from 'firebase/auth';
 
-const add_to_liked_list = async ( cat, user, user_id ) => {
-    console.log(user.liked_cats);
+
+const add_to_liked_list = async ( cat, data ) => {
     const new_id = cat.cat_id;
-    const len = user.liked_cats.length; 
+    const currentUser = getAuth().currentUser;
     try {
-        console.log("hey");
-        setData(`/users/${user_id}/liked_cats/${len}`, new_id);
+        //if (Object.hasOwn(currentUser.uid, "liked_cats")) {
+        if (true) {
+            console.log(currentUser.uid.liked_cats)
+            console.log("do we get inside this if statement");
+            const length = data.users.currentUser.uid.liked_cats; 
+            setData(`/users/${currentUser.uid}/liked_cats/length`, new_id);
+        } else {
+            await setData(`/users/${currentUser.uid}/liked_cats`, [new_id]);
+        }
     } catch(error) {
         alert(error);
     }
 }
 
-const add_to_disliked_list = async ( cat, user, user_id ) => {
-    console.log(user.disliked_cats);
+const add_to_disliked_list = async ( cat, data ) => {
     const new_id = cat.cat_id;
-    const len = user.disliked_cats.length; 
+    const currentUser = getAuth().currentUser;
+    //const len = data.users.uid.disliked_cats.length;
     try {
-        console.log("hey");
-        setData(`/users/${user_id}/disliked_cats/${len}`, new_id);
+        await setData(`/users/${currentUser.uid}/disliked_cats`, [new_id]);
+        //setData(`/users/${uid}/disliked_cats/${len}`, data.users.uid.disliked_cats.push(new_id));
     } catch(error) {
         alert(error);
     }
@@ -29,16 +37,16 @@ const add_to_disliked_list = async ( cat, user, user_id ) => {
 const AdoptCat = ({data}) => {
     console.log(data);
     // console.log(data);
-    const user_id = '00000000000000000';
-    const user = data.users[user_id];
+    // const currentUser = getAuth().currentUser;
+    // currentUser.uid;
     const cat = data.cats[0];
     
     const liked_list = (event) => {
-        add_to_liked_list(cat, user, user_id);
+        add_to_liked_list(cat, data);
     }
 
     const disliked_list = (event) => {
-        add_to_disliked_list(cat, user, user_id);
+        add_to_disliked_list(cat, data);
     }
 
     return (
