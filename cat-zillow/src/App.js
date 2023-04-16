@@ -9,6 +9,12 @@ import { getAuth } from 'firebase/auth';
 import Home from './Components/home.jsx';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
+// Bootstrap Packages
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
+
+
 // DISPLAY LIST OF USERS
 const ListUsers = ({ users }) => (
   <div>
@@ -63,14 +69,12 @@ const setName = async (cat, newName) => {
 // ONLY DISPLAY THE STUFF IF THE USER IS LOGGED IN
 const LoggedIn = ({ user, data }) => {
   return (
-    <div>
-      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+    <div class="jumbotron jumbotron-fluid">
+      <h1 class="display-6">You are signed in.</h1>
+      <p class="lead"> Your name is { user.displayName } and your email is { user.email }. </p>
       <SignOutButton/>
-      <button className = 'home'>
-                <a className='hi' href="/">
-                    <div id="submit-text">Home</div>
-                </a>    
-      </button>
+      <a href="/" class='btn btn-primary btn-lg' role="button">Home</a>
+
       {/* <Home/> */}
       {/* <ListUsers users={ data.users }></ListUsers>
       <ListCats cats={ data.cats }></ListCats>
@@ -109,6 +113,7 @@ function App() {
   return (
     <div className="App">
       { user ? <LoggedIn user={ user } data={ data }/> : <LoggedOut users={ data.users }/> }
+      <hr class="my-4" />
       { !user ? <></> : 
       <BrowserRouter>
             <Routes>

@@ -137,7 +137,7 @@ export const SignInButton = ( users ) => {
 
 export const SignOutButton = () => {
     return (
-        <button
+        <button class="btn btn-primary btn-lg"
             onClick={() => signOut()}>
             Sign Out
         </button>
