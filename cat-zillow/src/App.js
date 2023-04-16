@@ -5,7 +5,6 @@ import { SignInButton, SignOutButton } from './Components/signin';
 import {AddCat} from './Components/addcat';
 import './App.css';
 import AdoptCat from './Components/adoptcat.jsx';
-import AddCat from './Components/addcat.jsx';
 import Home from './Components/home.jsx';
 
 import {BrowserRouter, Routes, Route} from "react-router-dom";
